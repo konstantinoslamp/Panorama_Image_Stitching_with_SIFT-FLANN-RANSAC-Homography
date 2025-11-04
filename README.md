@@ -1,8 +1,8 @@
-# 🌄 Panorama Image Stitching with SIFT + FLANN + RANSAC + Homography
+# Panorama Image Stitching with SIFT + FLANN + RANSAC + Homography
 
 A comprehensive tutorial on creating panoramic images by stitching multiple overlapping photos using computer vision techniques.
 
-## 📋 Table of Contents
+## Table of Contents
 - [Overview](#overview)
 - [Technologies Used](#technologies-used)
 - [Requirements](#requirements)
@@ -14,7 +14,7 @@ A comprehensive tutorial on creating panoramic images by stitching multiple over
 
 ---
 
-## 🎯 Overview
+## Overview
 
 This project demonstrates how to combine two overlapping images into a single panoramic image using:
 - **SIFT (Scale-Invariant Feature Transform)** for feature detection
@@ -25,31 +25,9 @@ This project demonstrates how to combine two overlapping images into a single pa
 
 ---
 
-## 🛠️ Technologies Used
+## How It Works
 
-- **Python 3.x**
-- **OpenCV (cv2)** - Computer vision library
-- **NumPy** - Numerical computations
-- **Matplotlib** - Visualization
-
----
-
-## 📦 Requirements
-
-```bash
-pip install opencv-python numpy matplotlib
-```
-
-Or install with contrib modules (for SIFT):
-```bash
-pip install opencv-contrib-python
-```
-
----
-
-## 🔬 How It Works
-
-### 1️⃣ **Input Images**
+### 1️ **Input Images**
 Load two overlapping images that will be stitched together.
 
 ![Input Images](1.jpg)
@@ -57,7 +35,7 @@ Load two overlapping images that will be stitched together.
 
 ---
 
-### 2️⃣ **FLANN Matching**
+### 2️ **FLANN Matching**
 Match features between the two images using SIFT + FLANN with ratio test filtering.
 
 ![FLANN Matches](output_Flann.png)
@@ -71,7 +49,7 @@ Match features between the two images using SIFT + FLANN with ratio test filteri
 
 ---
 
-### 3️⃣ **Final Result**
+### 3️ **Final Result**
 The two images are stitched together into a seamless panorama.
 
 ![Final Panorama](result.png)
@@ -79,7 +57,7 @@ The two images are stitched together into a seamless panorama.
 
 ---
 
-## 🎨 Results
+## Results
 
 ### Statistics
 - Total keypoints detected: XXX
@@ -89,7 +67,7 @@ The two images are stitched together into a seamless panorama.
 
 ---
 
-## ❌ Problems We Faced & Solutions
+## Problems We Faced & Solutions
 
 ### Problem 1: Split Panorama Approach
 **What we tried:**
@@ -102,7 +80,7 @@ The two images are stitched together into a seamless panorama.
 - Result had black regions and didn't align properly
 
 **Solution:**
-✅ Use **two real photos taken from different angles** with natural perspective difference
+Use **two real photos taken from different angles** with natural perspective difference
 
 ---
 
@@ -120,7 +98,7 @@ result = cv.warpPerspective(img1, M, (w, h))
 ```python
 result = cv.warpPerspective(img2, M, (w1 + w2, max_h))
 ```
-✅ Made canvas large enough to fit both images
+Made canvas large enough to fit both images
 
 ---
 
@@ -140,7 +118,7 @@ dst_pts = keypoint2[...].pt  # img2 as destination
 src_pts = keypoint2[...].pt  # img2 as source (warp this one)
 dst_pts = keypoint1[...].pt  # img1 as destination (keep fixed)
 ```
-✅ Correct order: img1 stays fixed, img2 is warped to match
+Correct order: img1 stays fixed, img2 is warped to match
 
 ---
 
@@ -167,7 +145,7 @@ result[0:h1, 0:w1] = np.where(
     result[0:h1, 0:w1]
 )
 ```
-✅ Use `np.where()` for conditional blending with matching dimensions
+Use `np.where()` for conditional blending with matching dimensions
 
 ---
 
@@ -181,9 +159,9 @@ result[0:h1, 0:w1] = np.where(
 - No smooth transition
 
 **Solution:**
-✅ Conditional blending: only place img1 where result is black (0,0,0)
-✅ Use masking to identify black regions
-✅ Automatic cropping to remove all black borders
+Conditional blending: only place img1 where result is black (0,0,0)
+Use masking to identify black regions
+Automatic cropping to remove all black borders
 
 ---
 
