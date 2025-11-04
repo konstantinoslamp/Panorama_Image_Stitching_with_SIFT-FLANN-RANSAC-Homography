@@ -67,16 +67,6 @@ The two images are stitched together into a seamless panorama.
 
 ---
 
-## Results
-
-### Statistics
-- Total keypoints detected: XXX
-- Good matches after ratio test: YYY
-- Final panorama size: AAA × BBB pixels
-- Processing time: ~X seconds
-
----
-
 ## Problems We Faced & Solutions
 
 ### Problem 1: Split Panorama Approach
