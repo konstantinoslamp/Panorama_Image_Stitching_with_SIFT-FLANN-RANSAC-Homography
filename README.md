@@ -30,8 +30,18 @@ This project demonstrates how to combine two overlapping images into a single pa
 ### 1️ **Input Images**
 Load two overlapping images that will be stitched together.
 
-![Input Images](1.jpg)
-![Input Images](2.jpg)
+<table>
+  <tr>
+    <td><img src="1.jpg" width="400" alt="Image 1"/></td>
+    <td><img src="2.jpg" width="400" alt="Image 2"/></td>
+  </tr>
+  <tr>
+    <td align="center"><i>Image 1 (Left)</i></td>
+    <td align="center"><i>Image 2 (Right)</i></td>
+  </tr>
+</table>
+
+*Two overlapping images with 30-50% overlap*
 
 ---
 
@@ -53,7 +63,7 @@ Match features between the two images using SIFT + FLANN with ratio test filteri
 The two images are stitched together into a seamless panorama.
 
 ![Final Panorama](result.png)
-*✅ Final stitched panoramic image*
+*Final stitched panoramic image*
 
 ---
 
